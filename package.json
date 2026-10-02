@@ -9,5 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bullmq": "^6.3.11",
+    "ioredis": "^6.0.0",
+    "uuid": "^14.0.2"
+  }
 }
