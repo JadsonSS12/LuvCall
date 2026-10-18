@@ -12,10 +12,12 @@
   "description": "",
   "dependencies": {
     "bullmq": "^6.3.11",
-    "dotenv": "^18.0.5",
+    "dotenv": "^18.0.8",
+    "express": "^5.2.1",
     "fastify": "^5.12.5",
     "ioredis": "^6.0.0",
     "mysql2": "^3.24.5",
+    "sequelize": "^6.37.8",
     "uuid": "^14.0.2"
   }
 }

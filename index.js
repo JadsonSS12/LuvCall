@@ -1,6 +1,8 @@
 import { build } from './app.js';
 ///import { setupWorkers } from './workers/index.js';
 ///import { redisConnection } from './config/redis.js';
+import sequelize from "./src/database/database.js"
+import './src/models/user.js';
 
 export async function starting(){
     const app = await build();
@@ -15,6 +17,16 @@ export async function starting(){
         app.log.error(err);
         process.exit(1);
     }
+
+ try {
+  await sequelize.authenticate();
+  app.log.info('Conectado ao MySQL!');
+
+  await sequelize.sync();
+  app.log.info('Tabelas sincronizadas com sucesso!');
+} catch (error) {
+  console.error('Detalhe do erro de conexão:', error);
+}
 
     const shutdown = async (signal) => {
         app.log.info('encerrando server');
