@@ -1,7 +1,29 @@
-export default class notification{
-    constructor(content, user_id, date){
-        this.content = content,
-        this.user_id = user_id,
-        this.date = date
-    }
-}
+import { Model, DataTypes } from 'sequelize'
+import sequelize from '../database/database.js'
+
+export default class notification extends Model{}
+    notification.init({
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        content: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        date: {
+            type: DataTypes.DATE,
+            allowNull: false
+        }
+    },
+{
+    sequelize,
+    modelName: "notification",
+    tableName: "notification",
+    timestamps: true
+});
