@@ -19,3 +19,11 @@ export async function createUser(name, email, password,){
 export async function findByEmail(email){
     return await user.findOne({ where: { email }})
 }
+
+export async function updateuser(userId, name, email, password){
+    return await user.update({name, email, password}, {where : { id: {userId}}});
+}
+
+export async function deleteUser(userId){
+    return await user.destroy({where: {id: {userId}}});
+}

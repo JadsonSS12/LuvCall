@@ -9,12 +9,20 @@ message.init({
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
-    userId: {
+    senderId: {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
             model: user,
             key: 'id'
+        },
+    },
+    receiverId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: user,
+            key: "id"
         },
     },
     content: {
