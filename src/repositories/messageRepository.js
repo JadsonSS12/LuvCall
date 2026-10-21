@@ -5,7 +5,7 @@ export async function findAll(){
 }
 
 export async function createMessage(senderId, receiverId, content, date){
-    return await message.create({senderId, receiverId, content, date});
+    return await message.create(senderId, receiverId, content, date);
 
 }
 

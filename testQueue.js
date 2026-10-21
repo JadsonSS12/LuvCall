@@ -1,4 +1,4 @@
-import 'dotenv/config'; // Garante o carregamento do .env no Node.js (ES Modules)
+/*import 'dotenv/config'; // Garante o carregamento do .env no Node.js (ES Modules)
 import { redisConnection } from './src/config/redis.js';
 import { NotificationQueue } from './src/queues/notificationQueue.js';
 
@@ -35,4 +35,4 @@ async function runTest() {
   }
 }
 
-runTest();
+runTest();*/
