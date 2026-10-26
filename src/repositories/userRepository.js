@@ -6,7 +6,7 @@ export async function findAll(){
 
 export async function findById(userId){
 
-    return await user.findByPK({where: {userId}});
+    return await user.findByPk(userId);
 
 }
 
@@ -20,10 +20,12 @@ export async function findByEmail(email){
     return await user.findOne({ where: { email }})
 }
 
-export async function updateuser(userId, name, email, password){
-    return await user.update({name, email, password}, {where : { id: {userId}}});
+
+export async function updateUser(userId, updateData) {
+    await user.update(updateData, { where: { id: userId } });
+    return await findById(userId);
 }
 
 export async function deleteUser(userId){
-    return await user.destroy({where: {id: {userId}}});
+    return await user.destroy({where: {id: userId}});
 }

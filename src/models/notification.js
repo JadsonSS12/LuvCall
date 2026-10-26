@@ -19,6 +19,14 @@ export default class notification extends Model{}
         date: {
             type: DataTypes.DATE,
             allowNull: false
+        },
+        receiver:{
+            type: DataTypes.UUID,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         }
     },
 {
