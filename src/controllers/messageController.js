@@ -35,3 +35,37 @@ export async function store(request, reply) {
     return reply.status(status).send({ error: error.message || "Erro ao enviar mensagem." });
   }
 }
+
+export async function update(request, reply){
+  try{
+    const {id} = request.params;
+    const {content, date} = request.body;
+
+    if (!id){
+      return reply.status(404).send({error:'messagem atualizada não existe2'});
+    }
+    const updateMessage = await messageService.updateMessage(id, content, date);
+    return reply.status(301).send(updateMessage);
+
+  }catch(error){
+    const status = error.statusCode || 500;
+    return reply.status(status).send({ error: error.message || "Erro ao atualizar a mensagem." });
+  }
+  
+}
+
+export async function destroy(request, reply) {
+  try {
+    const { id} = request.body;
+
+    if (!id) {
+      return reply.status(400).send({ error: "senderId, receiverId e content são obrigatórios." });
+    }
+
+    const dMessage = await messageService.deleteMessage(id);
+    return reply.status(201).send(dMessage);
+  } catch (error) {
+    const status = error.statusCode || 500;
+    return reply.status(status).send({ error: error.message || "Erro ao enviar mensagem." });
+  }
+}

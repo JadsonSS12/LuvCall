@@ -16,7 +16,6 @@ export async function getMessageById(id) {
 }
 
 export async function createMessage( senderId, receiverId, content, date ) {
-  // 1. Cria a mensagem no MySQL através do repositório
   const createdMessage = await messageRepository.createMessage( senderId, receiverId, content, date );
 
   // 2. Enfileira a notificação no BullMQ (Redis)
@@ -29,4 +28,28 @@ export async function createMessage( senderId, receiverId, content, date ) {
   });
 
   return createdMessage;
+}
+
+export async function updateMessage(messageId, content, date){
+  const updateMessage = await messageRepository.findById(messageId);
+
+  if (!updateMessage){
+   const error = new Error("Messagem não existe1.");
+   error.statusCode = 404;
+   throw error;
+  }
+
+  return await messageRepository.updateMessage(messageId, content, date);
+}
+
+export async function deleteMessage(messageId){
+  const deleteMessage = await messageRepository.findById(messageId);
+
+  if (!deleteMessage){
+    const error = new Error("Messagem deletada não existe1.");
+   error.statusCode = 404;
+   throw error;
+  }
+
+  return await messageRepository.deleteMessage(messageId);
 }
