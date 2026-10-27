@@ -30,7 +30,7 @@ export async function createMessage( senderId, receiverId, content, date ) {
   return createdMessage;
 }
 
-export async function updateMessage(messageId, content, date){
+export async function updateMessage(messageId, updateData){ //alterado para UpdateData e não atributos
   const updateMessage = await messageRepository.findById(messageId);
 
   if (!updateMessage){
@@ -39,10 +39,10 @@ export async function updateMessage(messageId, content, date){
    throw error;
   }
 
-  return await messageRepository.updateMessage(messageId, content, date);
+  return await messageRepository.updateMessage(messageId, updateData);
 }
 
-export async function deleteMessage(messageId){
+export async function destroyMessage(messageId){
   const deleteMessage = await messageRepository.findById(messageId);
 
   if (!deleteMessage){
