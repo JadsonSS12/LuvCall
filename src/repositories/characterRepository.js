@@ -14,7 +14,7 @@ export async function createChar(name, userId, sex, hairColor, eyeColor, skinCol
 
 export async function updateChar(charId, updateData){
     await character.update(updateData, {where: { id: charId}});
-    return character
+    return await findById(charId);
 }
 
 export async function deleteChar(charId){
