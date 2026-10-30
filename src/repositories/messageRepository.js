@@ -14,7 +14,7 @@ export async function createMessage(senderId, receiverId, content, date){
 }
 
 export async function updateMessage(messageId, updateData){
-    await message.update(updateData, {where: { id : {messageId}}});
+    await message.update(updateData, {where: { id : messageId}});
     return await findById(messageId);
 }
 
