@@ -1,5 +1,6 @@
-import { DataTypes, Model } from "sequelize";
-import user from "./user";
+import { DataTypes, Model, Sequelize } from "sequelize";
+import sequelize from "../database/database.js";
+import user from "./user.js";
 import * as CharSettings from "./enum/charSettings.js"
 
 export default class character extends Model{}

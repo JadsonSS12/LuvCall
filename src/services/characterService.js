@@ -33,3 +33,15 @@ export async function updateChar( characterId, name, userId, sex, hairColor, eye
 
     return await characterRepository.updateChar(characterId, updateData);
 }
+
+export async function deleteChar(charId){
+    const dchar = await characterRepository.findById(charId);
+    
+    if (!dchar){
+        const error = new Error("char deletada não existe1.");
+       error.statusCode = 404;
+       throw error;
+      }
+    
+    return await characterRepository.deleteChar(charId);
+}

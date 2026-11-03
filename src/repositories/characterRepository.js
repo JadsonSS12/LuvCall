@@ -9,7 +9,7 @@ export async function findById(characterId){
 }
 
 export async function createChar(name, userId, sex, hairColor, eyeColor, skinColor){
-    return await character.create(name, userId, sex, hairColor, eyeColor, skinColor);
+    return await character.create({name, userId, sex, hairColor, eyeColor, skinColor});
 }
 
 export async function updateChar(charId, updateData){
